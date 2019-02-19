@@ -10,64 +10,8 @@
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'>
 
     <meta name="mobile-web-app-capable" content="yes">
-    
-    <style>
-      
-        #navigation, #navigation * {
-            box-sizing: border-box;
-            position: relative;
-            padding: 0px;
-            margin: 0px;
-            font-family: Arial, Helvetica, sans-serif;
-            font-size: 15px;
-        }
-
-        #navigation ul {
-            list-style: none;
-            width: 200px;
-        }
-        #navigation li {
-            display: block;
-        }
-        #navigation li ul {
-            display: none;
-        }
-
-        #navigation a {
-            display: block;
-            padding: 10px;
-            text-decoration: none;
-            background: rgba(220,220,220,1);
-        }
-        
-        #navigation a:hover {
-            background: rgba(110,110,250,1);
-            color: #fff;
-
-        }
-
-        #navigation .childToggle {
-            position: absolute;
-            height: 100%;
-            width: 30px;
-            display: block;
-            right: 0px;
-            top: 0px;
-            z-index: 1;
-            background: rgba(0,0,0,0);
-            border: none;
-        }
-
-        #navigation .childToggle::after {
-            content: '+';
-        }
-
-        #navigation button {
-            cursor: pointer;
-        }
-
-    
-    </style>
+  
+    <link rel="stylesheet" href="styles.css">
 
 </head>
 
@@ -76,108 +20,9 @@
 
         <nav id="navigation"></nav>
             
-
-	</div>
-      
-    <script>
-        
-        const menu = [
-            {
-                title: 'Home',
-                url: '#home'
-            },
-            {
-                title: 'Products',
-                url: '#producst',
-                child: [
-                    {
-                        title: 'Lorem ipsum',
-                      url: '#producst/Lorem ipsum',
-                    }, {
-                        title: 'consectetur',
-                      url: '#producst/consectetur',
-                    }, {
-                        title: ' adipiscing elit. ',
-                      url: '#producst/adipiscing elit',
-                    }, {
-                        title: 'Nulla auctor nisl ',
-                      url: '#producst/Nulla auctor nisl',
-                    }, {
-                        title: 'sit amet ligula blandit ',
-                      url: '#producst/sit amet ligula blandit',
-                    }, {
-                        title: ' vehicula. Vestibulum',
-                      url: '#producst/vehicula. Vestibulum',
-                    }
-                ]
-
-                
-            },
-            {
-                title: 'Peoples',
-                url: '#peoples',
-
-                child: [
-                    {
-                        title:'Matti Meikäläinen',
-                        url: 'matti meikäläinen'
-                    },
-                    {
-                        title:'Maija Malinen',
-                        url: 'maija malinen'
-                    }
-                ]
-            },
-            {
-                title: 'Contact us',
-                url: '#Contact us'
-            }
-            ]
-            
-
-
-            let recursio = function(m) {
-
-                let ul = document.createElement('ul')
-
-                m.forEach((m) => {
-                    
-                    let a = document.createElement('button')
-
-                    if(m.url) {
-
-                        a = document.createElement('a')
-                        a.setAttribute('href',m.url)
-                    }
-               
-                    a.innerHTML = m.title;
-
-                    let li = document.createElement('li')
-
-                    li.appendChild(a)
-
-                    if(m.child) {
-                        let child = recursio(m.child)
-
-                        let childToggle = document.createElement('button');
-                        childToggle.classList.add('childToggle')
-
-                        li.appendChild(childToggle)
-                        li.appendChild(child)
-                    }
-
-                    ul.appendChild(li)
-
-                })
-
-                return ul
-
-            }   
-
-            document.getElementById('navigation').appendChild(recursio(menu))
-            
-          
-
-    </script>
+    </div>
+    
+    
+  <script src="listmenu.js"  type="module"></script>
 </body>
 </html>
